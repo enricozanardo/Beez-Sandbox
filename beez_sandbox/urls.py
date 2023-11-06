@@ -28,7 +28,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include([
         path('v1/', include([
+            path('', include('authweb.urls', namespace="auth_api")),
             path('', include('blocks.urls', namespace="blocks_api")),
+            path('', include('wallets.urls', namespace="wallet_api")),
         ])),
     ])),
 ]

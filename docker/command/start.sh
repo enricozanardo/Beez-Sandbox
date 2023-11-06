@@ -11,8 +11,11 @@ cd /code/
 
 python3 manage.py makemigrations
 python3 manage.py migrate auth
+python3 manage.py migrate authtoken
 python3 manage.py migrate
 
+
+python3 manage.py loaddata fixtures/users.json
 
 # python3 manage.py collectstatic
 

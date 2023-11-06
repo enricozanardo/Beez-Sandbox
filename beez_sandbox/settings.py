@@ -37,8 +37,11 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     # APPS
     'blocks',
+    'wallets',
     'ash',
     # Django
+    "rest_framework",
+    'rest_framework.authtoken',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -76,6 +79,12 @@ TEMPLATES = [
         },
     },
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication'
+    ],
+}
 
 WSGI_APPLICATION = 'beez_sandbox.wsgi.application'
 

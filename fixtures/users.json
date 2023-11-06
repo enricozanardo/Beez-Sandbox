@@ -1,0 +1,20 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$2Ipo5wdlbB6FUIPtYK1Z39$8HXlADpnfgZumVk+sCbiQIJdWZYOwdpgRdZNqaj6Ato=",
+      "last_login": null,
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "email": "antoniobruno82@gmail.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2023-11-06T19:52:19.079Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  }
+]

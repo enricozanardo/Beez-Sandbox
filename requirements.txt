@@ -5,5 +5,11 @@ djangorestframework
 django-cors-headers
 requests
 psycopg2-binary
+
 # TEMPLATE
 django-ash
+
+# Crypto
+mnemonic
+cryptography
+environ
