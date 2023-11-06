@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  db_postgis_beez_sandbox:
+    image: postgis/postgis:15-3.3
+    container_name: db_postgis_beez_sandbox
+    volumes:
+      - ./data-db/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_HOST=db_postgis_beez_sandbox
+      - POSTGRES_DB=beez_sandbox
+      - POSTGRES_PASSWORD=beez_sandbox
+      - POSTGRES_USER=beez_sandbox
+    ports:
+      - "5432:5432"
+    networks:
+      backend_beez_sandbox:
+        aliases:
+          - beez_sandbox-network
+
+
+  beez_sandbox_web:
+    container_name: beez_sandbox_web
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    environment:
+      - DB_ENGINE=django.contrib.gis.db.backends.postgis
+      - DB_HOST=db_postgis_beez_sandbox
+      - DB_NAME=beez_sandbox
+      - DB_USER=beez_sandbox
+      - DB_PASSWORD=beez_sandbox
+      - DB_PORT=5432
+      - DEBUG=on
+      - DEBUG_TOOLBAR=off
+    # depends_on:
+    #  - db_postgis_certificatum
+    volumes:
+      - .:/code
+      - ./docker/nginx/nginx.conf:/etc/nginx/sites-available/default
+      - ./docker/certbot/conf:/etc/letsencrypt
+      - ./docker/certbot/www:/var/www/certbot
+    tty: true
+    networks:
+      backend_beez_sandbox:
+        aliases:
+          - beez_sandbox-network
+
+    command: bash -c "/bin/bash /code/docker/command/start.sh"
+    ports:
+      - "9001:9001"
+      - "80:80"
+      - "443:443"
+
+networks:
+  backend_beez_sandbox:
+    name: beez_sandbox-network
+    # external: true
+
+

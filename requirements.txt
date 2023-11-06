@@ -1,0 +1,9 @@
+django==4.*
+gunicorn
+django-environ
+djangorestframework
+django-cors-headers
+requests
+psycopg2-binary
+# TEMPLATE
+django-ash

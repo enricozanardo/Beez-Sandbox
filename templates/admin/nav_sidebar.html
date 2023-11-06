@@ -1,0 +1,21 @@
+{% load i18n ash_tags static %}
+<nav class="pcoded-navbar">
+    <div class="navbar-wrapper">
+        <!-- put Logo in hear -->
+        <div class="navbar-brand header-logo">
+            <a href="{% if not is_popup %}{% url "admin:index" %}{% else %}#{% endif %}" class="b-brand">
+                <div class="b-bg" style="background: transparent !important;">
+                    <img src="{% static 'logo/logo_beez.svg' %}" style="width: 35px;height: 35px;"/>
+                </div>
+               <span class="b-title">{{ site_header|default:_('Django administration') }}</span>
+            </a>
+            <a class="mobile-menu on" id="mobile-collapse" href="javascript:">
+                <span></span>
+            </a>
+        </div>
+        <!-- end Logo in hear -->
+        {% if not is_popup %}
+            {% include 'admin/app_list.html' with app_list=available_apps show_changelinks=False nav_menu=True %}
+        {% endif %}
+    </div>
+</nav>
