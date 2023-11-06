@@ -1,0 +1,46 @@
+{
+	"info": {
+		"_postman_id": "5028fcdd-306f-430e-aa6f-bc7807b0fc2d",
+		"name": "Beez Sandbox",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6189459"
+	},
+	"item": [
+		{
+			"name": "Blocks",
+			"item": [
+				{
+					"name": "blocks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}blocks",
+							"host": [
+								"{{host}}blocks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "blocks/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}blocks/sdadsdsasad",
+							"host": [
+								"{{host}}blocks"
+							],
+							"path": [
+								"sdadsdsasad"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
