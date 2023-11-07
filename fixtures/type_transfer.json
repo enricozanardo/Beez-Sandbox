@@ -1,1 +1,90 @@
-[{"model": "settings.typetransfer", "pk": 1, "fields": {"key": "CREATE_ASSET", "description": "", "fee": 5}}, {"model": "settings.typetransfer", "pk": 2, "fields": {"key": "STAKE", "description": "", "fee": 1}}, {"model": "settings.typetransfer", "pk": 3, "fields": {"key": "TRANSFER", "description": "", "fee": 2}}, {"model": "settings.typetransfer", "pk": 4, "fields": {"key": "EXCHANGE", "description": "", "fee": 0}}, {"model": "settings.typetransfer", "pk": 5, "fields": {"key": "UPDATE_ASSET", "description": "", "fee": 1}}, {"model": "settings.typetransfer", "pk": 6, "fields": {"key": "REQUEST", "description": "", "fee": 1}}, {"model": "settings.typetransfer", "pk": 7, "fields": {"key": "CANCEL_REQUEST", "description": "", "fee": 1}}, {"model": "settings.typetransfer", "pk": 8, "fields": {"key": "RESPONSE_TO_REQUEST", "description": "", "fee": 0}}, {"model": "settings.typetransfer", "pk": 9, "fields": {"key": "CREATE_COLLECTION", "description": "", "fee": 1}}, {"model": "settings.typetransfer", "pk": 10, "fields": {"key": "UPDATE_COLLECTION", "description": "", "fee": 1}}]
+[
+  {
+    "model": "settings.typetransfer",
+    "pk": "CANCEL_REQUEST",
+    "fields": {
+      "description": "",
+      "fee": 1
+    }
+  },
+  {
+    "model": "settings.typetransfer",
+    "pk": "CREATE_ASSET",
+    "fields": {
+      "description": "",
+      "fee": 5
+    }
+  },
+  {
+    "model": "settings.typetransfer",
+    "pk": "CREATE_COLLECTION",
+    "fields": {
+      "description": "",
+      "fee": 2
+    }
+  },
+  {
+    "model": "settings.typetransfer",
+    "pk": "DELETE_COLLECTION",
+    "fields": {
+      "description": "",
+      "fee": 0
+    }
+  },
+  {
+    "model": "settings.typetransfer",
+    "pk": "EXCHANGE",
+    "fields": {
+      "description": "",
+      "fee": 0
+    }
+  },
+  {
+    "model": "settings.typetransfer",
+    "pk": "REQUEST",
+    "fields": {
+      "description": "",
+      "fee": 1
+    }
+  },
+  {
+    "model": "settings.typetransfer",
+    "pk": "RESPONSE_TO_REQUEST",
+    "fields": {
+      "description": "",
+      "fee": 0
+    }
+  },
+  {
+    "model": "settings.typetransfer",
+    "pk": "STAKE",
+    "fields": {
+      "description": "",
+      "fee": 1
+    }
+  },
+  {
+    "model": "settings.typetransfer",
+    "pk": "TRANSFER",
+    "fields": {
+      "description": "",
+      "fee": 2
+    }
+  },
+  {
+    "model": "settings.typetransfer",
+    "pk": "UPDATE_ASSET",
+    "fields": {
+      "description": "",
+      "fee": 1
+    }
+  },
+  {
+    "model": "settings.typetransfer",
+    "pk": "UPDATE_COLLECTION",
+    "fields": {
+      "description": "",
+      "fee": 1
+    }
+  }
+]
