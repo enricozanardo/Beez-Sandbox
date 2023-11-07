@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"antoniobruno82+test2@gmail.com\",\n    \"password\": \"password1\"\n}",
+							"raw": "{\n    \"email\": \"antoniobruno82+test3@gmail.com\",\n    \"password\": \"password1\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -57,12 +57,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}blocks/sdadsdsasad",
+							"raw": "{{host}}blocks/62dcdb737e865d68d870c7b8ae99f93b1fe972a96c397739782f3d1f7380f6c9",
 							"host": [
 								"{{host}}blocks"
 							],
 							"path": [
-								"sdadsdsasad"
+								"62dcdb737e865d68d870c7b8ae99f93b1fe972a96c397739782f3d1f7380f6c9"
 							]
 						}
 					},
@@ -101,12 +101,81 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Wallet Transactions",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Token {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}wallet/transactions",
+							"host": [
+								"{{host}}wallet"
+							],
+							"path": [
+								"transactions"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
 		{
 			"name": "Transactions",
 			"item": [
+				{
+					"name": "Transactions",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}transactions",
+							"host": [
+								"{{host}}transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Transactions Detail",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}transaction/77600a905a89b5fc967bbd88b7ac6136fa70071c15b5d0b1c6c2f260bb69c8b6",
+							"host": [
+								"{{host}}transaction"
+							],
+							"path": [
+								"77600a905a89b5fc967bbd88b7ac6136fa70071c15b5d0b1c6c2f260bb69c8b6"
+							]
+						}
+					},
+					"response": []
+				},
 				{
 					"name": "Transaction - TRANSFER",
 					"request": {
@@ -129,7 +198,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"type\": \"TRANSFER\",\n    \"address_receiver\": \"bzx19d77e864338d53aad6c5e4799005f7ce9ab9f0011\",\n    \"data\": 10,\n    \"token\": 12343\n}\n",
+							"raw": "{\n    \"type\": \"TRANSFER\",\n    \"address_receiver\": \"bzxca9feee7dd413ffb716d7b3f3747e86f445f840094\",\n    \"data\": 50\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -137,9 +206,66 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}transactions",
+							"raw": "{{host}}transaction",
 							"host": [
-								"{{host}}transactions"
+								"{{host}}transaction"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Transaction - EXCHANGE",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Token {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"type\": \"EXCHANGE\",\n    \"address_receiver\": \"bzx19d77e864338d53aad6c5e4799005f7ce9ab9f0011\",\n    \"data\": 10\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}transaction",
+							"host": [
+								"{{host}}transaction"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Info",
+			"item": [
+				{
+					"name": "Info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}info",
+							"host": [
+								"{{host}}info"
 							]
 						}
 					},

@@ -1,1 +1,1 @@
-from .wallet_api import ApiWallet
+from .wallet_api import ApiWallet, ApiWalletTransactions
