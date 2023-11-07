@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     # APPS
     'blocks',
     'wallets',
+    'collection',
     'transactions',
     'settings',
     'info',
