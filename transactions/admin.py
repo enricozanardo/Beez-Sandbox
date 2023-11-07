@@ -10,7 +10,7 @@ class TransactionAdmin(admin.ModelAdmin):
     fieldsets = (
         ('Transaction', {
             'fields': (
-                ('id', 'type_transaction', 'fee', 'address_sender', 'address_receiver', 'block', 'signature', 'token', 'timestamp'),
+                ('id', 'type_transaction', 'fee', 'address_sender', 'address_receiver', 'block', 'signature', 'timestamp'),
             ),
         }),
     )

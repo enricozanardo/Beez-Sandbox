@@ -29,7 +29,7 @@ class Transaction(models.Model):
     type_transaction = models.ForeignKey(TypeTransfer, default=None, null=True, blank=True, on_delete=models.DO_NOTHING)
     fee = models.IntegerField('fee', default=0, null=True, blank=True)
     data = models.TextField('data', default=None, null=False, blank=False)
-    token = models.TextField('token', default=None, null=False, blank=False)
+    token = models.TextField('token', default=None, null=True, blank=True)
     address_sender = models.CharField('address sender', max_length=255, default=None, null=True, blank=True)
     signature = models.CharField('signature', max_length=255, default=None, null=True, blank=True)
     address_receiver = models.CharField('address receiver', max_length=255, default=None, null=True, blank=True)

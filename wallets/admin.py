@@ -10,7 +10,7 @@ class WalletAdmin(admin.ModelAdmin):
     fieldsets = (
         ('Wallet', {
             'fields': (
-                ('mnemonic', 'address', 'private_key', 'public_key', 'balance', 'user'),
+                ('mnemonic', 'address', 'private_key', 'public_key', 'balance', 'user', 'called_exchange'),
             ),
         }),
     )

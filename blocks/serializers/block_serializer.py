@@ -5,5 +5,5 @@ from blocks.models import Block
 class BlockSerializer(serializers.ModelSerializer):
     class Meta:
         model = Block
-        fields = "__all__"
+        fields = ("id", "block_count", "forger", "last_hash", "signature", "timestamp", "transactions",)
         depth = 2

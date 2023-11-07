@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'wallets',
     'transactions',
     'settings',
+    'info',
     'ash',
     # Django
     "rest_framework",

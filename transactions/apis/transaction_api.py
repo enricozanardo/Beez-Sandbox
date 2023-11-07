@@ -2,9 +2,9 @@ from rest_framework import generics
 from blocks.models import Block
 from wallets.models import Wallet
 from transactions.models import Transaction
+from transactions.serializers import TransactionsSerializer
 from settings.enums import TypeTransfer as TypeTransferEnum
 from settings.models import TypeTransfer
-from blocks.serializers import BlockSerializer
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from utils.beez_crypto_utils import BeezCryptoUtils
@@ -15,24 +15,45 @@ from datetime import datetime
 from django.http import JsonResponse
 import codecs
 
+
+class ApiListTransactions(generics.ListAPIView):
+    queryset = Transaction.objects.all().order_by('timestamp')
+    serializer_class = TransactionsSerializer
+
+
+class ApiTransactionDetails(generics.GenericAPIView):
+
+    def get(self, request, transaction_id, *args, **kwargs):
+        transaction = Transaction.objects.filter(id=transaction_id).first()
+        serialized = TransactionsSerializer(transaction, many=False)
+        return Response(serialized.data)
+
+
 class ApiTransaction(generics.GenericAPIView):
     permission_classes = (IsAuthenticated,)
 
     def post(self, request, format=None):
         user = self.request.user
         wallet = Wallet.objects.filter(user=user).first()
+
         curr_dt = datetime.now()
         timestamp = int(round(curr_dt.timestamp()))
         data = request.data
         type_trans = str(data['type']).upper()
         type_transfer = TypeTransfer.objects.filter(key=type_trans).first()
 
+        if type_transfer.key == TypeTransferEnum.EXCHANGE:
+            if wallet.called_exchange:
+                content = {
+                    "error": 'not possible call exchange'
+                }
+                return JsonResponse(content, status=422)
+
         transaction_data = {
             "type_transaction": type_transfer.key,
             "fee": type_transfer.fee,
             "data": data['data'],
             "timestamp": timestamp,
-            "token": data['token'],
             "address_receiver": data['address_receiver'],
             "address_sender": wallet.address
         }
@@ -54,8 +75,6 @@ class ApiTransaction(generics.GenericAPIView):
         if block_last:
             count_block = block_last.block_count + 1
             last_hast = block_last.id
-
-
 
         block_data = {
             "forger": wallet.address,
@@ -83,13 +102,35 @@ class ApiTransaction(generics.GenericAPIView):
             type_transaction_id=str(type_transfer.key),
             fee=type_transfer.fee,
             data=data['data'],
-            token=data['token'],
             signature=signature_str,
             address_receiver=data['address_receiver'],
             address_sender=wallet.address,
             block_id=str(block.id),
             timestamp=timestamp
         )
+
+        if type_transfer.key == TypeTransferEnum.TRANSFER:
+            decrease = type_transfer.fee + int(data['data'])
+            increase = int(data['data'])
+            current_amount = wallet.balance
+            new_current_amount = current_amount - decrease
+            wallet.balance = new_current_amount
+            wallet.save()
+
+            wallet_receive = Wallet.objects.filter(address=data['address_receiver']).first()
+            if wallet_receive:
+                current_amount = wallet_receive.balance
+                new_current_amount = current_amount + increase
+                wallet_receive.balance = new_current_amount
+                wallet_receive.save()
+
+        elif type_transfer.key == TypeTransferEnum.EXCHANGE:
+            if not wallet.called_exchange:
+                current_amount = wallet.balance
+                new_current_amount = current_amount + 1000
+                wallet.called_exchange = True
+                wallet.balance = new_current_amount
+                wallet.save()
 
         # INSERIRE I VARI CATCH CON LE COSE DA FARE
 
