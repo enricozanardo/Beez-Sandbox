@@ -8,6 +8,7 @@ from rest_framework.authtoken.models import Token
 from utils.beez_crypto_utils import BeezCryptoUtils
 from wallets.models import Wallet
 from wallets.serializers import WalletSerializer
+import binascii
 
 
 class APILogin(ObtainAuthToken):

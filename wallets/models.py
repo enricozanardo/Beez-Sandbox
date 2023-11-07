@@ -10,6 +10,9 @@ class Wallet(models.Model):
     balance = models.IntegerField('balance', default=0, null=True, blank=True)
     user = models.ForeignKey(User, default=None, null=True, blank=True, on_delete=models.DO_NOTHING)
 
+    def __str__(self):
+        return self.address
+
     class Meta:
         app_label = 'wallets'
         verbose_name = "Wallet"

@@ -31,6 +31,7 @@ urlpatterns = [
             path('', include('authweb.urls', namespace="auth_api")),
             path('', include('blocks.urls', namespace="blocks_api")),
             path('', include('wallets.urls', namespace="wallet_api")),
+            path('', include('transactions.urls', namespace="transaction_api")),
         ])),
     ])),
 ]

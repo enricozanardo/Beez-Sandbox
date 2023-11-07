@@ -10,8 +10,10 @@ class Block(models.Model):
     timestamp = models.IntegerField('timestamp', default=None, null=True, blank=True)
     transactions = models.IntegerField('transactions', default=None, null=True, blank=True)
 
+    def __str__(self):
+        return self.id
 
-class Meta:
-    app_label = 'Blocks'
-    verbose_name = "Block"
-    verbose_name_plural = "Blocks"
+    class Meta:
+        app_label = 'blocks'
+        verbose_name = "Block"
+        verbose_name_plural = "Blocks"

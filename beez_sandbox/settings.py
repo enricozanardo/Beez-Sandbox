@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     # APPS
     'blocks',
     'wallets',
+    'transactions',
+    'settings',
     'ash',
     # Django
     "rest_framework",

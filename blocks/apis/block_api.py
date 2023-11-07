@@ -5,7 +5,7 @@ from rest_framework.response import Response
 
 
 class ApiListBlocks(generics.ListAPIView):
-    queryset = Block.objects.all()
+    queryset = Block.objects.all().order_by('id')
     serializer_class = BlockSerializer
 
 
