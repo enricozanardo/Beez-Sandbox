@@ -13,7 +13,6 @@ import binascii
 import hashlib
 from datetime import datetime
 from django.http import JsonResponse
-import codecs
 
 
 class ApiListTransactions(generics.ListAPIView):

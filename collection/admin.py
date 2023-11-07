@@ -3,14 +3,14 @@ from collection.models import Collections
 
 
 class CollectionsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'signature', 'address_receiver', 'wallet', 'transaction')
+    list_display = ('id', 'name', 'signature', 'wallet', 'transaction')
     search_fields = ('id', 'type_transaction',)
     ordering = ('id',)
 
     fieldsets = (
         ('Transaction', {
             'fields': (
-                ('id', 'name', 'signature', 'address_receiver', 'wallet', 'transaction', 'timestamp'),
+                ('id', 'name', 'signature', 'wallet', 'transaction', 'timestamp'),
             ),
         }),
     )
