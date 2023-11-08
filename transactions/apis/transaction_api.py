@@ -41,6 +41,18 @@ class ApiTransaction(generics.GenericAPIView):
         type_trans = str(data['type']).upper()
         type_transfer = TypeTransfer.objects.filter(key=type_trans).first()
 
+        decrease = 0
+        if type_transfer.key == TypeTransferEnum.TRANSFER:
+            decrease = type_transfer.fee + int(data['data'])
+        elif type_transfer.key == TypeTransferEnum.EXCHANGE:
+            decrease = type_transfer.fee
+
+        if wallet.balance < decrease:
+            content = {
+                "error": "balance can't be negative"
+            }
+            return JsonResponse(content, status=404)
+
         if type_transfer.key == TypeTransferEnum.EXCHANGE:
             if wallet.called_exchange:
                 content = {

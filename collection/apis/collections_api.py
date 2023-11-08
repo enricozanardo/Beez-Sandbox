@@ -147,6 +147,13 @@ class ApiCollections(generics.GenericAPIView):
         collection = Collections.objects.filter(id=collection_id, wallet_id=wallet.id).first()
         if collection:
             type_transfer = TypeTransfer.objects.filter(key=TypeTransferEnum.UPDATE_COLLECTION).first()
+
+            if wallet.balance < type_transfer.fee:
+                content = {
+                    "error": "balance can't be negative"
+                }
+                return JsonResponse(content, status=404)
+
             transaction_data = {
                 "type_transaction": TypeTransferEnum.UPDATE_COLLECTION,
                 "fee": type_transfer.fee,
@@ -237,6 +244,12 @@ class ApiCollections(generics.GenericAPIView):
         timestamp = int(round(curr_dt.timestamp()))
 
         type_transfer = TypeTransfer.objects.filter(key=TypeTransferEnum.CREATE_COLLECTION).first()
+
+        if wallet.balance < type_transfer.fee:
+            content = {
+                "error": "balance can't be negative"
+            }
+            return JsonResponse(content, status=404)
 
         transaction_data = {
             "type_transaction": TypeTransferEnum.CREATE_COLLECTION,
