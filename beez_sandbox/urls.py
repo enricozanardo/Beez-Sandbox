@@ -33,6 +33,7 @@ urlpatterns = [
             path('', include('wallets.urls', namespace="wallet_api")),
             path('', include('transactions.urls', namespace="transaction_api")),
             path('', include('info.urls', namespace="info_api")),
+            path('', include('assets.urls', namespace="assets_api")),
             path('', include('collection.urls', namespace="collection_api")),
         ])),
     ])),

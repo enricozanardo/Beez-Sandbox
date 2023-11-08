@@ -35,6 +35,10 @@
 			]
 		},
 		{
+			"name": "Assets",
+			"item": []
+		},
+		{
 			"name": "Blocks",
 			"item": [
 				{
@@ -236,7 +240,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"type\": \"EXCHANGE\",\n    \"address_receiver\": \"bzx19d77e864338d53aad6c5e4799005f7ce9ab9f0011\",\n    \"data\": 10\n}\n",
+							"raw": "{\n    \"type\": \"EXCHANGE\",\n    \"address_receiver\": \"bzx10f7e7e5471e4523135c50fe032a15e32a6af10004\",\n    \"data\": 10\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -266,6 +270,183 @@
 							"raw": "{{host}}info",
 							"host": [
 								"{{host}}info"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Collections",
+			"item": [
+				{
+					"name": "Collections",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Token {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}collections",
+							"host": [
+								"{{host}}collections"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Collections Details",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Token {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}collection/e0677837450b4b0277e8316c4327c3d6c312fe49b42c6c4ee171fdaed311d983",
+							"host": [
+								"{{host}}collection"
+							],
+							"path": [
+								"e0677837450b4b0277e8316c4327c3d6c312fe49b42c6c4ee171fdaed311d983"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Collections Delete",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Token {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}collection/6f78cd7e1d5126fe046472cda35f8744051b25c65fb81c549a52de58fef7c8a9",
+							"host": [
+								"{{host}}collection"
+							],
+							"path": [
+								"6f78cd7e1d5126fe046472cda35f8744051b25c65fb81c549a52de58fef7c8a9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Collection",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Token {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"document new pdf\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}collection",
+							"host": [
+								"{{host}}collection"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Collection",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Token {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"document 111pdf\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}collection/e0677837450b4b0277e8316c4327c3d6c312fe49b42c6c4ee171fdaed311d983",
+							"host": [
+								"{{host}}collection"
+							],
+							"path": [
+								"e0677837450b4b0277e8316c4327c3d6c312fe49b42c6c4ee171fdaed311d983"
 							]
 						}
 					},
