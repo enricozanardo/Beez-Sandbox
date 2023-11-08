@@ -1,1 +1,1 @@
-from .assets_serializer import AssetsSerializer
+from .assets_serializer import AssetsSerializer, AllAssetsSerializer

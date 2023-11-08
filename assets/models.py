@@ -7,6 +7,7 @@ class Assets(models.Model):
     id = models.TextField('id', default=None, null=False, blank=False, primary_key=True)
     file = models.TextField('file', default=None, null=False, blank=False)
     name = models.CharField('name', default=None, null=False, blank=False)
+    amount = models.IntegerField('amount', default=0, null=False, blank=False)
     signature = models.CharField('signature', max_length=255, default=None, null=True, blank=True)
     wallet = models.ForeignKey(Wallet, default=None, null=True, blank=True, on_delete=models.DO_NOTHING)
     collections = models.ForeignKey(Collections, default=None, null=True, blank=True, on_delete=models.DO_NOTHING)

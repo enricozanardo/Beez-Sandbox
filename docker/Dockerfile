@@ -38,8 +38,8 @@ ARG C_INCLUDE_PATH=/usr/include/gdal
 
 COPY . /code
 
-# RUN apt-get -y install nginx && \
-#   apt install build-essential checkinstall zlib1g-dev -y && \
+RUN apt-get -y install nginx && \
+    apt install build-essential checkinstall zlib1g-dev -y
 #   mkdir /etc/nginx/certificates && \
 #   mv ./docker/certbot/www/localhost.crt /etc/nginx/certificates/localhost.crt && \
 #   mv ./docker/certbot/www/localhost.key /etc/nginx/certificates/localhost.key && \
