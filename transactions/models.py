@@ -3,6 +3,7 @@ from settings.models import TypeTransfer
 from blocks.models import Block
 from django.contrib.auth.models import User
 
+
 class Transaction(models.Model):
     id = models.TextField('id', default=None, null=False, blank=False, primary_key=True)
     type_transaction = models.ForeignKey(TypeTransfer, default=None, null=True, blank=True, on_delete=models.DO_NOTHING)
@@ -15,6 +16,10 @@ class Transaction(models.Model):
     block = models.ForeignKey(Block, default=None, null=True, blank=True, on_delete=models.DO_NOTHING)
     timestamp = models.IntegerField('timestamp', default=None, null=True, blank=True)
 
+    @property
+    def type(self):
+        return self.type_transaction_id
+
     def __str__(self):
         return self.id
 
@@ -22,5 +27,3 @@ class Transaction(models.Model):
         app_label = 'transactions'
         verbose_name = "Transaction"
         verbose_name_plural = "Transactions"
-
-
