@@ -204,10 +204,12 @@ class ApiMoveAssets(generics.GenericAPIView):
         if data_trans is None:
             data_trans = 'empty'
 
+        data_trans = hashlib.sha256(data_trans.encode('UTF-8'))
+
         transaction_data = {
             "type_transaction": TypeTransferEnum.UPDATE_ASSET,
             "fee": type_transfer.fee,
-            "data": data_trans,
+            "data": str(data_trans.hexdigest()),
             "timestamp": timestamp,
             "address_receiver": wallet.address,
             "address_sender": wallet.address
@@ -309,10 +311,12 @@ class ApiTransferAssets(generics.GenericAPIView):
         curr_dt = datetime.now()
         timestamp = int(round(curr_dt.timestamp()))
 
+        data_trans = hashlib.sha256(data['assets_id'].encode('UTF-8'))
+
         transaction_data = {
             "type_transaction": TypeTransferEnum.UPDATE_ASSET,
             "fee": type_transfer.fee,
-            "data": data['assets_id'],
+            "data": str(data_trans.hexdigest()),
             "timestamp": timestamp,
             "address_receiver": wallet.address,
             "address_sender": assets.address
