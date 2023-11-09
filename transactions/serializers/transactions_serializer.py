@@ -6,5 +6,5 @@ class TransactionsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Transaction
         fields = (
-            "id", "type_transaction", "fee", "data", "address_sender", "address_receiver", "signature", "block_id",)
+            "id", "type_transaction_id", "fee", "data", "address_sender", "address_receiver", "signature", "block_id",)
         depth = 1
