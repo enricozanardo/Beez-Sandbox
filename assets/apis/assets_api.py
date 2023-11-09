@@ -68,7 +68,7 @@ class ApiAssets(generics.GenericAPIView):
         transaction_data = {
             "type_transaction": TypeTransferEnum.CREATE_ASSET,
             "fee": type_transfer.fee,
-            "data": data_trans,
+            "data": str(data_trans.hexdigest()),
             "timestamp": timestamp,
             "address_receiver": wallet.address,
             "address_sender": wallet.address
