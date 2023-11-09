@@ -154,10 +154,12 @@ class ApiCollections(generics.GenericAPIView):
                 }
                 return JsonResponse(content, status=404)
 
+            data_trans = hashlib.sha256(data['name'].encode('UTF-8'))
+
             transaction_data = {
                 "type_transaction": TypeTransferEnum.UPDATE_COLLECTION,
                 "fee": type_transfer.fee,
-                "data": data['name'],
+                "data": str(data_trans.hexdigest()),
                 "timestamp": timestamp,
                 "address_receiver": wallet.address,
                 "address_sender": wallet.address
@@ -251,10 +253,12 @@ class ApiCollections(generics.GenericAPIView):
             }
             return JsonResponse(content, status=404)
 
+        data_trans = hashlib.sha256(data['name'].encode('UTF-8'))
+
         transaction_data = {
             "type_transaction": TypeTransferEnum.CREATE_COLLECTION,
             "fee": type_transfer.fee,
-            "data": data['name'],
+            "data": str(data_trans.hexdigest()),
             "timestamp": timestamp,
             "address_receiver": wallet.address,
             "address_sender": wallet.address
